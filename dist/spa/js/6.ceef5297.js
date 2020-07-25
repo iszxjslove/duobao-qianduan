@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[6],{"5f5f":function(e,n,t){"use strict";t.r(n);var u=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("router-view")},r=[],a={name:"EmptyLayout"},l=a,o=t("2877"),c=Object(o["a"])(l,u,r,!1,null,null,null);n["default"]=c.exports}}]);
