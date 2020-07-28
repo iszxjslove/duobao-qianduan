@@ -1,0 +1,12 @@
+{
+  "name": "treasure-store",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "author": "output <output@163.com>",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "2.3.0",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0"
+  }
+}

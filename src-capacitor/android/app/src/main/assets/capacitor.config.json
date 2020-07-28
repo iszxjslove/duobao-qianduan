@@ -1,0 +1,10 @@
+{
+  "appId": "org.capacitor.quasar.app",
+  "appName": "Treasure store",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www",
+  "server": {
+    "url": "http://192.168.10.188:8080"
+  }
+}
