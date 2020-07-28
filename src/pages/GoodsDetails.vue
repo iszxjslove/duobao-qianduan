@@ -2,7 +2,7 @@
   <q-layout view="hHh lpR fFf">
     <q-page-container>
       <q-page v-if="data">
-        <q-img :src="'/uploads' + data.picture" :ratio="1" class="bg-grey-1">
+        <q-img :src="data.picture | cdn" :ratio="1" class="bg-grey-1">
           <template v-slot:error>
             <div
               class="absolute-full flex flex-center bg-grey-3 text-grey-8 text-body2"
@@ -16,9 +16,9 @@
         </q-img>
         <q-item>
           <q-item-section>
-            <q-item-label class="text-center text-h6">{{
-              data.title
-            }}</q-item-label>
+            <q-item-label class="text-center text-h6">
+              {{ data.title }}
+            </q-item-label>
           </q-item-section>
         </q-item>
         <q-item>
@@ -56,7 +56,7 @@
         <div class="text-center text-h5 q-pa-sm">{{ $t("description") }}</div>
         <q-separator />
         <q-card class="full-width overflow-hidden">
-          <q-card-section v-html="desc"></q-card-section>
+          <q-card-section v-html="data.desc"></q-card-section>
         </q-card>
       </q-page>
     </q-page-container>

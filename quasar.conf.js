@@ -75,13 +75,13 @@ module.exports = function(ctx) {
       open: true, // opens browser window automatically
       proxy: {
         // proxy all requests starting with /api to jsonplaceholder
-        "/uploads": {
-          target: "http://192.168.10.188:18080",
-          changeOrigin: true,
-          pathRewrite: {
-            "^/uploads": ""
-          }
-        }
+        // "/uploads": {
+        //   target: "http://static.winwinclubs.com",
+        //   changeOrigin: true,
+        //   pathRewrite: {
+        //     "^/uploads": ""
+        //   }
+        // }
       }
     },
 

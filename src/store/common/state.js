@@ -13,7 +13,7 @@ export default function() {
       subTitle: "",
       content: ""
     },
-    cdnurl: Config.options.baseURL,
+    cdnurl: "http://static.winwinclubs.com",
     currency: {
       symbol: "₹"
     },

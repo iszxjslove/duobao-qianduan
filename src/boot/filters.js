@@ -6,4 +6,8 @@ export default async ({ Vue, store }) => {
   Vue.filter("default", function(value, def) {
     return value ? value : def;
   });
+
+  Vue.filter("cdn", function(path) {
+    return store.state.common.cdnurl + path;
+  });
 };
