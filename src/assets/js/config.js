@@ -1,7 +1,7 @@
 const options = {
   prefix: "treasure_store_",
   development: "http://192.168.0.9:18080/",
-  production: "http://api.duobao.ssptv.xyz",
+  production: "http://api.winwinclubs.com/",
   game_limit_time: 30000,
   cookie: {
     domain: "",
