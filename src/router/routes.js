@@ -1,4 +1,4 @@
-import { SessionStorage } from "quasar";
+import { SessionStorage, LocalStorage } from "quasar";
 import Config from "assets/js/config";
 
 const routes = [
@@ -13,10 +13,9 @@ const routes = [
         path: "game",
         component: () => {
           let time = SessionStorage.getItem(Config.key("game_limit_time"));
-          let test_group = SessionStorage.getItem(Config.key("test_group"));
+          let userinfo = LocalStorage.getItem(Config.key("userinfo"));
           if (
-            test_group &&
-            time &&
+            userinfo.test &&
             time + Config.options.game_limit_time <= Date.now()
           ) {
             return import("pages/Search.vue");

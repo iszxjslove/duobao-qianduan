@@ -139,3 +139,12 @@ export const financeOpening = () => {
 export const financeProducts = () => {
   return api("/finance/products", {}, { api: "financeProducts" }, "post");
 };
+
+export const financeBalanceInto = (product_id, amount) => {
+  return api(
+    "/finance/balance_into",
+    { product_id, amount },
+    { api: "financeBalanceInto" },
+    "post"
+  );
+};

@@ -34,6 +34,7 @@ export function setUserinfo(state, userinfo) {
   } else {
     userinfo = LocalStorage.getItem(Configs.key("userinfo"));
   }
+
   for (const key in userinfo) {
     if (userinfo.hasOwnProperty(key) && state.userinfo.hasOwnProperty(key)) {
       state.userinfo[key] = userinfo[key];

@@ -101,11 +101,6 @@ export default {
       login(this.form).then(data => {
         if (data) {
           data.userinfo.auto = this.autoLogin;
-          this.$q.sessionStorage.set(
-            this.$config.key("test_gruop"),
-            data.userinfo.test
-          );
-          this.$q.sessionStorage.set(this.$config.key("game_limit_time"), -1);
           this.$store.commit("member/login", data.userinfo);
           this.$router.replace({
             path: this.$route.query.redirect || "/"

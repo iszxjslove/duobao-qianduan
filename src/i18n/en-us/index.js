@@ -165,5 +165,7 @@ export default {
   kubera_finance: "Kubera Finance",
   application_protocol: "Application protocol",
   please_read_and_sign_the_agreement_carefully:
-    "Please read and sign the agreement carefully"
+    "Please read and sign the agreement carefully",
+  interest: "Interest",
+  balance: "Balance"
 };

@@ -350,7 +350,7 @@ export default {
     },
     cleartime() {
       if (this.userinfo.test) {
-        this.$q.sessionStorage.set(Config.key("game_limit_time"), -1);
+        this.$q.sessionStorage.remove(Config.key("game_limit_time"));
         window.location.reload();
       }
     }
@@ -371,9 +371,14 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-      window.location.reload();
-    }, Config.options.game_limit_time);
+    if (this.userinfo.test) {
+      this.timeout = setTimeout(() => {
+        window.location.reload();
+      }, Config.options.game_limit_time);
+    }
+  },
+  destroyed() {
+    clearTimeout(this.timeout);
   },
   created() {
     this.saleend = this.$q.sessionStorage.getItem(this.$config.key("saleend"));
