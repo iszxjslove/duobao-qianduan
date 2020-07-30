@@ -55,6 +55,11 @@ const routes = [
         ]
       },
       {
+        path: "recharge",
+        component: () => import("pages/Recharge.vue"),
+        meta: { title: "recharge" }
+      },
+      {
         path: "promotion",
         component: () => import("pages/Promotion.vue"),
         meta: { title: "my_promotion" }

@@ -59,7 +59,7 @@
       <q-separator />
 
       <q-btn-group class="bg-transparent q-py-sm" unelevated stretch spread>
-        <q-btn no-caps :label="$t('rechange')" />
+        <q-btn no-caps :label="$t('rechange')" to="/page/recharge" />
         <q-separator vertical />
         <q-btn no-caps :label="$t('withdrawal')" />
       </q-btn-group>

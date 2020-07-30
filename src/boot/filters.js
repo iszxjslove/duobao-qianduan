@@ -1,7 +1,9 @@
 export default async ({ Vue, store }) => {
-  Vue.filter("symbol", function(value) {
+  Vue.filter("symbol", function(value, fixed = 2) {
     value = value ? value : 0;
-    return store.state.common.currency.symbol + " " + (value * 1).toFixed(2);
+    return (
+      store.state.common.currency.symbol + " " + (value * 1).toFixed(fixed)
+    );
   });
 
   Vue.filter("default", function(value, def) {

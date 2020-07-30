@@ -14,7 +14,13 @@
             <q-icon name="keyboard_arrow_right"></q-icon>
           </q-item-section> -->
           <q-item-section side>
-            <q-btn color="white" text-color="black" unelevated no-caps>
+            <q-btn
+              color="white"
+              to="/page/recharge"
+              text-color="black"
+              unelevated
+              no-caps
+            >
               {{ $t("rechange") }}
               <q-icon name="keyboard_arrow_right" />
             </q-btn>

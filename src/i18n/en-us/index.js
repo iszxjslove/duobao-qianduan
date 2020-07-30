@@ -167,5 +167,9 @@ export default {
   please_read_and_sign_the_agreement_carefully:
     "Please read and sign the agreement carefully",
   interest: "Interest",
-  balance: "Balance"
+  balance: "Balance",
+  recharge: "Recharge",
+  my_balance: "My balance",
+  enter_or_select_recharge_amount: "Enter or select recharge amount",
+  historical_records: "Historical Records"
 };

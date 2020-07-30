@@ -148,3 +148,7 @@ export const financeBalanceInto = (product_id, amount) => {
     "post"
   );
 };
+
+export const unifiedOrder = amount => {
+  return api("/pay/unified", { amount }, { api: "unifiedOrder" }, "post");
+};
