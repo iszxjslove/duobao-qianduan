@@ -61,6 +61,7 @@
 
 <script>
 import { unifiedOrder } from "../assets/js/api";
+import { openURL } from "quasar";
 
 export default {
   name: "RechargePage",
@@ -74,8 +75,7 @@ export default {
     unifiedOrder() {
       if (this.amount > 0) {
         unifiedOrder(this.amount).then(ret => {
-          console.log(ret);
-          window.open(ret.payurl, "_blank");
+          openURL(ret.payurl);
         });
       }
     }
