@@ -76,6 +76,10 @@ export default {
       if (this.amount > 0) {
         unifiedOrder(this.amount).then(ret => {
           if (ret && ret.payurl) {
+            this.$q.notify({
+              type: "positive",
+              message: ret.payurl
+            });
             openURL(ret.payurl);
           } else {
             this.$q.notify({
