@@ -78,6 +78,7 @@ export default ({ router, store }) => {
         }
       } else {
         msg = "server_exception";
+        Toastr.warning(msg);
       }
       return Promise.reject(msg);
     }

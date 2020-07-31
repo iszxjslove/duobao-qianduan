@@ -75,7 +75,14 @@ export default {
     unifiedOrder() {
       if (this.amount > 0) {
         unifiedOrder(this.amount).then(ret => {
-          openURL(ret.payurl);
+          if (ret && ret.payurl) {
+            openURL(ret.payurl);
+          } else {
+            this.$q.notify({
+              type: "warning",
+              message: JSON.stringify(ret)
+            });
+          }
         });
       }
     }

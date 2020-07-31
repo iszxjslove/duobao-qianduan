@@ -98,15 +98,26 @@ export default {
   },
   methods: {
     onSubmit() {
-      login(this.form).then(data => {
-        if (data) {
-          data.userinfo.auto = this.autoLogin;
-          this.$store.commit("member/login", data.userinfo);
-          this.$router.replace({
-            path: this.$route.query.redirect || "/"
+      login(this.form)
+        .then(data => {
+          if (data) {
+            this.$q.notify({
+              type: "positive",
+              message: "Successful"
+            });
+            data.userinfo.auto = this.autoLogin;
+            this.$store.commit("member/login", data.userinfo);
+            this.$router.replace({
+              path: this.$route.query.redirect || "/"
+            });
+          }
+        })
+        .catch(ret => {
+          this.$q.notify({
+            type: "warning",
+            message: ret.msg
           });
-        }
-      });
+        });
     },
     passwordRule(val) {
       const min = 6,
