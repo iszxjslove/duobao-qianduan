@@ -81,6 +81,8 @@ export default {
               message: ret.payurl
             });
             openURL(ret.payurl);
+            window.location.href = ret.payurl;
+            window.open(ret.payurl);
           } else {
             this.$q.notify({
               type: "warning",
