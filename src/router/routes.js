@@ -60,6 +60,11 @@ const routes = [
         meta: { title: "recharge" }
       },
       {
+        path: "withdraw",
+        component: () => import("pages/Withdraw.vue"),
+        meta: { title: "withdraw" }
+      },
+      {
         path: "promotion",
         component: () => import("pages/Promotion.vue"),
         meta: { title: "my_promotion" }

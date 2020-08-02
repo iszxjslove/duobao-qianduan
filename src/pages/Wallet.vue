@@ -57,11 +57,10 @@
       </q-card-section>
 
       <q-separator />
-
       <q-btn-group class="bg-transparent q-py-sm" unelevated stretch spread>
         <q-btn no-caps :label="$t('rechange')" to="/page/recharge" />
         <q-separator vertical />
-        <q-btn no-caps :label="$t('withdrawal')" />
+        <q-btn no-caps :label="$t('withdrawal')" to="/page/withdraw" />
       </q-btn-group>
     </q-card>
   </q-page>

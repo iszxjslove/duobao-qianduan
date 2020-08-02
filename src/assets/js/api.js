@@ -55,7 +55,7 @@ export const smsSend = (mobile, event) => {
 };
 
 export const goodsList = params => {
-  return api("/goods/index", { params }, { api: "goodsList" }, "get");
+  return api("/goods/index", params, { api: "goodsList" }, "get");
 };
 
 export const showGoods = id => {
@@ -75,25 +75,15 @@ export const wager = (issue, selected, money, number) => {
 };
 
 export const issues = (page, limit) => {
-  return api(
-    "/game/issues",
-    { params: { page, limit } },
-    { api: "issues" },
-    "get"
-  );
+  return api("/game/issues", { page, limit }, { api: "issues" }, "get");
 };
 
 export const projects = params => {
-  return api("/game/projects", { params }, { api: "projects" }, "get");
+  return api("/game/projects", params, { api: "projects" }, "get");
 };
 
 export const billingList = (page, limit) => {
-  return api(
-    "/lists/billing",
-    { params: { page, limit } },
-    { api: "billingList" },
-    "get"
-  );
+  return api("/lists/billing", { page, limit }, { api: "billingList" }, "get");
 };
 
 export const envelope = (code, token) => {
@@ -105,7 +95,7 @@ export const robEnvelope = (code, token) => {
 };
 
 export const missionLists = params => {
-  return api("/mission/lists", { params }, { api: "missionLists" }, "get");
+  return api("/mission/lists", params, { api: "missionLists" }, "get");
 };
 
 export const missionReceive = id => {
@@ -117,7 +107,7 @@ export const complaintCategory = () => {
 };
 
 export const complaintIndex = params => {
-  return api("/complaint/index", { params }, { api: "complaintIndex" }, "get");
+  return api("/complaint/index", params, { api: "complaintIndex" }, "get");
 };
 
 export const complaintAdd = params => {
@@ -151,4 +141,28 @@ export const financeBalanceInto = (product_id, amount) => {
 
 export const unifiedOrder = amount => {
   return api("/pay/unified", { amount }, { api: "unifiedOrder" }, "post");
+};
+
+export const getBankList = () => {
+  return api("/bank/lists", {}, { api: "getBankList" }, "get");
+};
+
+export const addBank = row => {
+  return api("/bank/add", { row }, { api: "addBank" }, "post");
+};
+
+export const BankSetDefault = id => {
+  return api("/bank/set_default", { id }, { api: "BankSetDefault" }, "post");
+};
+
+export const changePassword = params => {
+  return api("/user/resetpwd", params, {
+    api: "changePassword"
+  });
+};
+
+export const changePaymentPassword = params => {
+  return api("/user/change_payment_password", params, {
+    api: "changePaymentPassword"
+  });
 };

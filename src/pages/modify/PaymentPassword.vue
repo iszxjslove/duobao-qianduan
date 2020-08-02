@@ -2,7 +2,7 @@
   <q-page>
     <q-form @submit="onSubmit" class="q-pa-md">
       <q-input
-        v-model="form.code"
+        v-model="form.captcha"
         :placeholder="$t('verification_code')"
         :label="$t('code')"
         :rules="[val => (val && val.length > 0) || $t('captcha_must')]"
@@ -37,7 +37,7 @@
       </q-input>
 
       <q-input
-        v-model="form.newPassword"
+        v-model="form.newpassword"
         type="password"
         :rules="[passwordRule]"
         :placeholder="$t('please_enter_the_new_name')"
@@ -55,7 +55,7 @@
         :label="$t('confirm_password')"
         :rules="[
           val =>
-            (val && val === form.newPassword) || $t('password_confirm_failed')
+            (val && val === form.newpassword) || $t('password_confirm_failed')
         ]"
         clearable
       >
@@ -81,25 +81,36 @@
 </template>
 
 <script>
+import { changePaymentPassword } from "../../assets/js/api";
+
 export default {
   name: "ModifyPaymentPasswordPage",
   data() {
     return {
+      sending: false,
       confirmPassword: "",
       form: {
-        oldPassword: "",
-        newPassword: "",
-        code: ""
+        type: "mobile",
+        mobile: "",
+        newpassword: "",
+        captcha: ""
       }
     };
   },
   computed: {
     loading() {
       return this.$store.getters["common/loadings"];
+    },
+    userinfo() {
+      return this.$store.state.member.userinfo;
     }
   },
   methods: {
-    onSubmit() {},
+    onSubmit() {
+      changePaymentPassword(this.form).then(ret => {
+        window.history.back();
+      });
+    },
     sendCode() {
       this.$refs.mobile.validate();
       if (this.$refs.mobile.hasError) {
@@ -129,6 +140,9 @@ export default {
       }
       return true;
     }
+  },
+  mounted() {
+    this.form.mobile = this.userinfo.mobile;
   }
 };
 </script>
