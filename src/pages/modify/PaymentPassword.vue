@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { changePaymentPassword } from "../../assets/js/api";
+import { resetPaymentPassword } from "../../assets/js/api";
 
 export default {
   name: "ModifyPaymentPasswordPage",
@@ -107,7 +107,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      changePaymentPassword(this.form).then(ret => {
+      resetPaymentPassword(this.form).then(ret => {
         window.history.back();
       });
     },

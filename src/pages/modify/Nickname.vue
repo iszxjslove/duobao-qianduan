@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import { changeUserProfile } from "../../assets/js/api";
+
 export default {
   name: "ModifyNicknamePage",
   data() {
@@ -37,7 +39,11 @@ export default {
     };
   },
   methods: {
-    onSubmit() {}
+    onSubmit() {
+      changeUserProfile(this.form).then(() => {
+        window.history.back();
+      });
+    }
   }
 };
 </script>

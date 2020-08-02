@@ -20,7 +20,9 @@
             </q-avatar>
           </q-item-section>
           <q-item-section @click.stop="copyCode">
-            <q-item-label>{{ userinfo.mobile }}</q-item-label>
+            <q-item-label>
+              {{ userinfo.nickname || userinfo.mobile }}
+            </q-item-label>
             <q-item-label>
               <span class="text-caption">{{ $t("code") }}:</span>
               <span class="text-body2">{{ userinfo.referrer }}</span>

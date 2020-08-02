@@ -155,14 +155,37 @@ export const BankSetDefault = id => {
   return api("/bank/set_default", { id }, { api: "BankSetDefault" }, "post");
 };
 
-export const changePassword = params => {
-  return api("/user/resetpwd", params, {
-    api: "changePassword"
+export const changePassword = (password, newpassword) => {
+  return api(
+    "/user/change_password",
+    { password, newpassword },
+    {
+      api: "changePassword"
+    }
+  );
+};
+
+export const resetPaymentPassword = params => {
+  return api("/user/reset_payment_password", params, {
+    api: "resetPaymentPassword"
   });
 };
 
-export const changePaymentPassword = params => {
-  return api("/user/change_payment_password", params, {
-    api: "changePaymentPassword"
-  });
+export const changeUserProfile = row => {
+  return api(
+    "/user/profile",
+    { row },
+    {
+      api: "changeUserProfile"
+    }
+  );
+};
+export const withdrawAdd = (amount, card_id) => {
+  return api(
+    "/withdraw/add",
+    { amount, card_id },
+    {
+      api: "withdrawAdd"
+    }
+  );
 };

@@ -2,7 +2,7 @@
   <q-page>
     <q-form @submit="onSubmit" class="q-pa-md">
       <q-input
-        v-model="form.oldPassword"
+        v-model="password"
         type="password"
         :placeholder="$t('please_enter_the_login_password')"
         :label="$t('password')"
@@ -16,7 +16,7 @@
         </template>
       </q-input>
       <q-input
-        v-model="form.newPassword"
+        v-model="newpassword"
         type="password"
         :rules="[passwordRule]"
         :placeholder="$t('please_enter_the_new_name')"
@@ -33,8 +33,7 @@
         :placeholder="$t('please_enter_the_confirm_password')"
         :label="$t('confirm_password')"
         :rules="[
-          val =>
-            (val && val === form.newPassword) || $t('password_confirm_failed')
+          val => (val && val === newpassword) || $t('password_confirm_failed')
         ]"
         clearable
       >
@@ -51,26 +50,31 @@
           class="full-width"
           size="lg"
           color="primary"
-        />
+        >
+        </q-btn>
       </div>
     </q-form>
   </q-page>
 </template>
 
 <script>
+import { changePassword } from "../../assets/js/api";
+
 export default {
   name: "ModifyLoginPasswordPage",
   data() {
     return {
       confirmPassword: "",
-      form: {
-        oldPassword: "",
-        newPassword: ""
-      }
+      password: "",
+      newpassword: ""
     };
   },
   methods: {
-    onSubmit() {},
+    onSubmit() {
+      changePassword(this.password, this.newpassword).then(() => {
+        window.history.back();
+      });
+    },
     passwordRule(val) {
       const min = 6,
         max = 32;

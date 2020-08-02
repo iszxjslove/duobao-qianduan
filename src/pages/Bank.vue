@@ -33,7 +33,7 @@
         </q-card-section>
       </q-card>
     </div>
-    <div class="text-center" v-if="bankList.length < 1">
+    <div class="text-center q-mt-md" v-if="bankList.length < 1">
       {{ $t("no_card") }}
     </div>
     <q-btn

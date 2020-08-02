@@ -71,6 +71,7 @@
         :disable="!amount || !bank"
         color="primary"
         no-caps
+        type="submit"
       ></q-btn>
     </q-form>
 
@@ -79,7 +80,7 @@
 </template>
 
 <script>
-import { getBankList } from "../assets/js/api";
+import { getBankList, withdrawAdd } from "../assets/js/api";
 import AddBank from "../components/AddBank.vue";
 
 export default {
@@ -87,7 +88,7 @@ export default {
   data() {
     return {
       amount: "",
-      bank: "",
+      bank: null,
       bankList: null,
       addBankDialog: false
     };
@@ -97,7 +98,11 @@ export default {
   },
   methods: {
     onSubmit() {
-      return true;
+      withdrawAdd(this.amount, this.bank.value).then(ret => {
+        this.$store.commit("member/setUserinfo", ret);
+        console.log(this.$q.localStorage.getItem(this.$config.key("userinfo")));
+        window.history.back();
+      });
     },
     addBankCallback() {
       this.getBanks();
@@ -122,6 +127,13 @@ export default {
     },
     loading() {
       return this.$store.getters["common/loadings"];
+    }
+  },
+  watch: {
+    amount(val) {
+      if (Number(val) > Number(this.userinfo.money)) {
+        this.amount = this.userinfo.money;
+      }
     }
   },
   created() {

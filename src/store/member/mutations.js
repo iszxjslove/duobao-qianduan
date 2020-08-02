@@ -29,15 +29,13 @@ export function autoToken(state) {
 }
 
 export function setUserinfo(state, userinfo) {
-  if (userinfo) {
-    LocalStorage.set(Configs.key("userinfo"), userinfo);
-  } else {
+  if (!userinfo) {
     userinfo = LocalStorage.getItem(Configs.key("userinfo"));
   }
-
-  for (const key in userinfo) {
+  for (let key in userinfo) {
     if (userinfo.hasOwnProperty(key) && state.userinfo.hasOwnProperty(key)) {
       state.userinfo[key] = userinfo[key];
     }
   }
+  LocalStorage.set(Configs.key("userinfo"), state.userinfo);
 }
