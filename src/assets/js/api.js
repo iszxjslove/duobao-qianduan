@@ -78,8 +78,8 @@ export const issues = (page, limit) => {
   return api("/game/issues", { page, limit }, { api: "issues" }, "get");
 };
 
-export const projects = params => {
-  return api("/game/projects", params, { api: "projects" }, "get");
+export const projects = (page, limit) => {
+  return api("/game/projects", { page, limit }, { api: "projects" }, "get");
 };
 
 export const billingList = (page, limit) => {
@@ -139,8 +139,8 @@ export const financeBalanceInto = (product_id, amount) => {
   );
 };
 
-export const unifiedOrder = amount => {
-  return api("/pay/unified", { amount }, { api: "unifiedOrder" }, "post");
+export const unifiedOrder = params => {
+  return api("/pay/unified", params, { api: "unifiedOrder" }, "post");
 };
 
 export const getBankList = () => {

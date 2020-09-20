@@ -23,7 +23,6 @@
           <q-input
             v-model="form.ifsc_code"
             :label="$t('IFSC code')"
-            :rules="[val => !!val || $t('Please enter the IFSC code')]"
             :placeholder="$t('Please enter the IFSC code')"
           />
           <q-input
@@ -48,31 +47,26 @@
           <q-input
             v-model="form.country"
             :label="$t('country')"
-            :rules="[val => !!val || $t('Please enter the State')]"
             :placeholder="$t('Please enter the State')"
           />
           <q-input
             v-model="form.city"
             :label="$t('city')"
-            :rules="[val => !!val || $t('Please enter the city')]"
             :placeholder="$t('Please enter the city')"
           />
           <q-input
             v-model="form.address"
             :label="$t('address')"
-            :rules="[val => !!val || $t('Please enter the address')]"
             :placeholder="$t('Please enter the address')"
           />
           <q-input
             v-model="form.mobile_number"
             :label="$t('Mobile number')"
-            :rules="[val => !!val || $t('Please enter the mobile number')]"
             :placeholder="$t('Please enter the mobile number')"
           />
           <q-input
             v-model="form.email"
             :label="$t('email')"
-            :rules="[val => !!val || $t('Please enter the email')]"
             :placeholder="$t('Please enter the email')"
           />
           <q-input

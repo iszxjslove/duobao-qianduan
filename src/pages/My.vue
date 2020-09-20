@@ -34,18 +34,20 @@
           </q-item-section>
         </q-item>
 
-        <q-btn-group flat class="absolute-bottom bg-transparent">
+        <q-btn-group spread flat class="absolute-bottom bg-transparent">
           <q-btn flat no-caps to="/page/wallet">
-            <div class="text-h6">
+            <span class="text-h6" style="line-height:1.2rem">
               {{ userinfo.money | symbol }}
-            </div>
-            <div>{{ $t("available_balance") }}</div>
+              <br />
+              <span class="text-caption">{{ $t("available_balance") }}</span>
+            </span>
           </q-btn>
           <q-btn flat no-caps to="/page/finance/account">
-            <div class="text-h6">
+            <span class="text-h6" style="line-height:1.2rem">
               {{ userinfo.financial_money | symbol }}
-            </div>
-            <div>{{ $t("kubera_finance") }}</div>
+              <br />
+              <span class="text-caption">{{ $t("kubera_finance") }}</span>
+            </span>
           </q-btn>
         </q-btn-group>
       </q-img>
