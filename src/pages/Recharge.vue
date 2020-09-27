@@ -10,23 +10,22 @@
     </q-item>
 
     <!-- paytype -->
-    <div class="q-pb-sm">ReCharge Methods</div>
+    <div class="q-pb-sm" v-show="paytypes.length > 1">ReCharge Methods</div>
     <q-list separator class="q-mb-md">
       <q-item
         tag="label"
         v-ripple
         v-for="(item, index) in paytypes"
         :key="index"
+        v-show="paytypes.length > 1"
       >
         <q-item-section avatar>
           <q-radio v-model="form.account_id" :val="item.id" color="primary" />
         </q-item-section>
         <q-item-section>
-          <q-item-label
-            >{{ item.fastpay.ch_name }}({{
-              item.channel.channel_label
-            }})</q-item-label
-          >
+          <q-item-label>
+            {{ item.fastpay.ch_name }}({{ item.channel.channel_label }})
+          </q-item-label>
           <q-item-label caption>{{ item.channel.desc }}</q-item-label>
         </q-item-section>
       </q-item>
