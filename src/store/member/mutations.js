@@ -21,11 +21,10 @@ export function autoToken(state) {
   const token =
     SessionStorage.getItem(Configs.key("auth")) ||
     Cookies.get(Configs.key("auth"));
-
   if (token) {
     SessionStorage.set(Configs.key("auth"), token);
-    state.userinfo.token = token;
   }
+  state.userinfo.token = token;
 }
 
 export function setUserinfo(state, userinfo) {

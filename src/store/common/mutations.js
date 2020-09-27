@@ -17,3 +17,11 @@ export function loadingSplice(state, load) {
     state.loadings.splice(index, 1);
   }
 }
+
+export function setCommon(state, data) {
+  for (const key in data) {
+    if (data.hasOwnProperty(key) && state.hasOwnProperty(key)) {
+      state[key] = data[key];
+    }
+  }
+}

@@ -14,6 +14,17 @@
 
       <q-card-section>
         <q-form @submit="onSubmit">
+          <q-item clickable v-ripple @click="selectBank" class="q-px-none">
+            <q-item-section>
+              <q-item-label
+                >{{ form.bank_code | default("Select Bank") }}</q-item-label
+              >
+            </q-item-section>
+            <q-item-section side>
+              <q-icon name="keyboard_arrow_right"></q-icon>
+            </q-item-section>
+          </q-item>
+          <q-separator />
           <q-input
             v-model="form.actual_name"
             :label="$t('Actual name')"
@@ -111,7 +122,9 @@ export default {
     return {
       dialog: false,
       confirm_number: "",
-      form: {}
+      form: {
+        bank_code: ""
+      }
     };
   },
   computed: {
@@ -120,6 +133,45 @@ export default {
     }
   },
   methods: {
+    selectBank() {
+      const list = {
+        YP_AXIS: "Axis Bank",
+        YP_INDNB: "Indian Bank",
+        YP_SBIN: "State Bank of India",
+        YP_KOTBK: "Kotak Mahindra Bank",
+        YP_CANBK: "Canara Bank",
+        YP_ICICI: "ICICI Bank",
+        YP_PNJB: "Punjab National Bank",
+        YP_BOIN: "Bank of India",
+        YP_IDBI: "IDBI Bank",
+        YP_SCTRD: "Standard Chartered Bank",
+        YP_KARBK: "Karnataka Bank",
+        YP_HDFC: "HDFC Bank",
+        YP_YESB: "Yes Bank",
+        YP_CBOI: "Central Bank of India",
+        YP_UNBOI: "Union Bank of India",
+        YP_BRDA: "Bank of Baroda"
+      };
+      let actions = [];
+      for (const key in list) {
+        if (list.hasOwnProperty(key)) {
+          actions.push({
+            id: key,
+            label: key + " (" + list[key] + ")",
+            icon: "credit_card"
+          });
+        }
+      }
+
+      this.$q
+        .bottomSheet({
+          message: "Select Bank",
+          actions: actions
+        })
+        .onOk(action => {
+          this.form.bank_code = action.id;
+        });
+    },
     onSubmit() {
       addBank(this.form).then(ret => {
         this.dialog = false;

@@ -1,5 +1,9 @@
 import { api } from "./fetch";
 
+export const getInit = () => {
+  return api("/index/init", {}, { api: "init" });
+};
+
 export const register = ({ mobile, password, code, referrer }) => {
   return api(
     "/user/register",
@@ -139,6 +143,10 @@ export const financeBalanceInto = (product_id, amount) => {
   );
 };
 
+export const getPayType = () => {
+  return api("/pay/paytype");
+};
+
 export const unifiedOrder = params => {
   return api("/pay/unified", params, { api: "unifiedOrder" }, "post");
 };
@@ -180,12 +188,8 @@ export const changeUserProfile = row => {
     }
   );
 };
-export const withdrawAdd = (amount, card_id) => {
-  return api(
-    "/withdraw/add",
-    { amount, card_id },
-    {
-      api: "withdrawAdd"
-    }
-  );
+export const withdrawAdd = params => {
+  return api("/withdraw/add", params, {
+    api: "withdrawAdd"
+  });
 };

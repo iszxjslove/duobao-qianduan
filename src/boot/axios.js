@@ -4,6 +4,9 @@ import { Loading, SessionStorage } from "quasar";
 import Configs from "assets/js/config";
 import Toastr from "assets/js/toastr";
 
+import * as apis from "assets/js/api";
+Vue.prototype.$apis = apis;
+
 const baseURL = Configs.options[process.env.NODE_ENV];
 
 Vue.prototype.$toastr = Toastr;
@@ -13,11 +16,11 @@ Vue.prototype.$config = Configs;
 export default ({ router, store }) => {
   // 请求拦截器server_exception
   axios.interceptors.request.use(
-    config => {
+    async config => {
       if (config.api) store.commit("common/loadingPush", config.api);
       config.baseURL = baseURL;
-      const token = SessionStorage.getItem(Configs.key("auth")) || "";
-      config.headers["token"] = token;
+      const token = await store.dispatch("member/getToken");
+      if (token) config.headers["token"] = token;
       return config;
     },
     error => {
@@ -76,9 +79,6 @@ export default ({ router, store }) => {
             router.replace({ path: "/" });
             break;
         }
-      } else {
-        msg = "server_exception";
-        Toastr.warning(msg);
       }
       return Promise.reject(msg);
     }

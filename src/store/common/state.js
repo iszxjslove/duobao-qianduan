@@ -18,6 +18,11 @@ export default function() {
       symbol: "₹"
     },
     tmpGoods: "",
-    redEnvelopesBg: "/envelopes_bg.jpg"
+    redEnvelopesBg: "/envelopes_bg.jpg",
+    min_withdraw_amount: "",
+    name: "",
+    team_fees: "",
+    wager_rate: "",
+    withdraw_rate: ""
   };
 }

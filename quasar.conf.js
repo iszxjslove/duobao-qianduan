@@ -102,7 +102,8 @@ module.exports = function(ctx) {
         "Cookies",
         "Notify",
         "Dialog",
-        "Loading"
+        "Loading",
+        "BottomSheet"
       ],
       config: {
         notify: {
