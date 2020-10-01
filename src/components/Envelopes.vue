@@ -43,6 +43,7 @@
               outline
               round
               dense
+              @click="$router.push('/')"
               v-close-popup
             />
           </q-card-section>
@@ -79,6 +80,7 @@
               round
               dense
               v-close-popup
+              @click="$router.replace('/')"
             />
           </q-card-section>
         </q-card>

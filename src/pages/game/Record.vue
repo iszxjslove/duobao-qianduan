@@ -16,15 +16,11 @@
 </template>
 
 <script>
-import InfiniteScroll from "../../components/InfiniteScroll";
 import { issues } from "../../assets/js/api";
 import { date } from "quasar";
 
 export default {
   name: "BillingPage",
-  components: {
-    InfiniteScroll
-  },
   data() {
     return {
       listApi: issues,

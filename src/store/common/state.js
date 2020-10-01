@@ -23,6 +23,7 @@ export default function() {
     name: "",
     team_fees: "",
     wager_rate: "",
-    withdraw_rate: ""
+    withdraw_rate: "",
+    prefix: "91"
   };
 }

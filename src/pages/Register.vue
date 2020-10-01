@@ -12,6 +12,7 @@
           lazy-rules
           ref="mobile"
           clearable
+          :prefix="'+' + form.prefix"
         >
           <template v-slot:prepend>
             <q-icon name="phone_android" />
@@ -149,13 +150,9 @@
 
 <script>
 import { agreement, register, smsSend } from "../assets/js/api";
-import AgreementDialog from "../components/AgreementDialog";
 
 export default {
   name: "RegisterPage",
-  components: {
-    AgreementDialog
-  },
   data() {
     return {
       accept: true,
@@ -169,7 +166,8 @@ export default {
         mobile: "",
         password: "",
         code: "",
-        referrer: ""
+        referrer: "",
+        prefix: this.$store.state.common.prefix
       }
     };
   },

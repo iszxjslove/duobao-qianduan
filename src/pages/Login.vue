@@ -10,6 +10,7 @@
             val => (val && val.length > 0) || $t('enter_correct_mobile')
           ]"
           lazy-rules
+          :prefix="'+' + form.prefix"
           ref="mobile"
         >
           <template v-slot:prepend>
@@ -87,7 +88,8 @@ export default {
       autoLogin: true,
       form: {
         mobile: "",
-        password: ""
+        password: "",
+        prefix: this.$store.state.common.prefix
       }
     };
   },

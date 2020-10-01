@@ -216,7 +216,6 @@
 <script>
 import { SessionStorage } from "quasar";
 import Config from "../assets/js/config";
-import WagerDialog from "../components/WagerDialog";
 import {
   agreement,
   play,
@@ -225,16 +224,9 @@ import {
   projects,
   userinfo
 } from "../assets/js/api";
-import AgreementDialog from "../components/AgreementDialog";
-import CountDown from "../components/CountDown";
 
 export default {
   name: "GamePage",
-  components: {
-    WagerDialog,
-    AgreementDialog,
-    CountDown
-  },
   data() {
     return {
       btnSize: "md",

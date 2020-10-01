@@ -1,8 +1,6 @@
 <template>
   <div>
-    EnvelopesOpenPage{{ dialog }}
     <envelopes-dialog v-model="dialog" :code="code" :token="token" />
-    <q-btn label="aaaaa" color="primary" @click="dialog = !dialog"></q-btn>
   </div>
 </template>
 
