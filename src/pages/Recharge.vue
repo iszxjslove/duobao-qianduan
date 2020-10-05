@@ -23,17 +23,15 @@
           <q-radio v-model="form.account_id" :val="item.id" color="primary" />
         </q-item-section>
         <q-item-section>
-          <q-item-label>
-            {{ item.fastpay.ch_name }}({{ item.channel.channel_label }})
-          </q-item-label>
-          <q-item-label caption>{{ item.channel.desc }}</q-item-label>
+          <q-item-label> {{ item.title }} </q-item-label>
+          <q-item-label caption>{{ item.desc }}</q-item-label>
         </q-item-section>
       </q-item>
 
       <q-item
         clickable
         v-ripple
-        v-if="payacc.channel && payacc.channel.pay_type === 'bank'"
+        v-if="payacc.channel && payacc.channel_type === 'bank'"
         @click="selectBank"
       >
         <q-item-section>
@@ -51,7 +49,7 @@
       outlined
       v-model="form.amount"
       :placeholder="$t('enter_or_select_recharge_amount')"
-      v-if="!payacc.amount_fixed || !payacc.amount_list"
+      v-if="payacc.custom_amount"
     >
       <template v-slot:prepend>
         {{ $store.state.common.currency.symbol }}
@@ -62,7 +60,7 @@
     <div class="row q-col-gutter-md q-mb-lg" v-if="payacc.amount_list">
       <div
         class="col-4"
-        v-for="(n, k) in payacc.amount_list.split(',')"
+        v-for="(n, k) in splitAmounts(payacc.amount_list)"
         :key="k"
       >
         <q-btn
@@ -106,6 +104,7 @@
 <script>
 import { getBankList, getPayType, unifiedOrder } from "../assets/js/api";
 import { openURL } from "quasar";
+import qs from "qs";
 
 export default {
   name: "RechargePage",
@@ -122,6 +121,11 @@ export default {
     };
   },
   methods: {
+    splitAmounts(str) {
+      return str.split(",").map(v => {
+        return v.replace(/(^\s*)|(\s*$)/g, "");
+      });
+    },
     selectBank() {
       getBankList().then(res => {
         let actions = [];
@@ -133,22 +137,22 @@ export default {
               icon: "credit_card"
             });
           });
-          this.$q
-            .bottomSheet({
-              message: "Select Bank",
-              actions: actions
-            })
-            .onOk(action => {
-              this.form.bank_id = action.id;
-              if (action.id) {
-                this.bankCard = action.label;
-              } else {
-                this.$router.push("/page/bank");
-              }
-            });
         }
         actions.push({});
         actions.push({ id: 0, label: "Add bank" });
+        this.$q
+          .bottomSheet({
+            message: "Select Bank",
+            actions: actions
+          })
+          .onOk(action => {
+            this.form.bank_id = action.id;
+            if (action.id) {
+              this.bankCard = action.label;
+            } else {
+              this.$router.push("/page/bank");
+            }
+          });
       });
     },
     unifiedOrder() {
@@ -173,7 +177,7 @@ export default {
         return false;
       }
 
-      if (this.payacc.channel.pay_type === "bank" && !this.form.bank_id) {
+      if (this.payacc.channel_type === "bank" && !this.form.bank_id) {
         this.$q.notify({
           type: "negative",
           message: "Please select bank card"
@@ -181,9 +185,12 @@ export default {
         return false;
       }
 
-      unifiedOrder(this.form).then(ret => {
+      unifiedOrder(this.form).then(async ret => {
         if (ret && ret.payurl) {
-          window.location.href = ret.payurl;
+          const token = await this.$store.dispatch("member/getToken");
+          let query = { token };
+          this.$q.loading.show();
+          window.location.href = [ret.payurl, qs.stringify(query)].join("?");
         } else {
           this.$q.notify({
             type: "warning",
@@ -194,6 +201,7 @@ export default {
     },
     getPayType() {
       getPayType().then(res => {
+        console.log(res);
         this.paytypes = res;
         if (res.length > 0) {
           this.form.account_id = res[0].id;
