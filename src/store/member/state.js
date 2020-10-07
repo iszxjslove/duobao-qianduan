@@ -16,7 +16,8 @@ export default function() {
       financial_money: "",
       money: "",
       shareBg: "shareBg.jpg",
-      test: 0
+      test: 0,
+      yuebao: {}
     }
   };
 }

@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { financeAccount } from "../../assets/js/api";
+import { userinfo } from "../../assets/js/api";
 import FinanceProducts from "../../components/FinanceProducts";
 
 export default {
@@ -54,6 +54,12 @@ export default {
   computed: {
     loading() {
       return this.$store.getters["common/loadings"];
+    },
+    userinfo() {
+      return this.$store.state.member.userinfo;
+    },
+    yuebao() {
+      return this.userinfo.yuebao || {};
     }
   },
   methods: {
@@ -61,11 +67,12 @@ export default {
       this.transferDialog = true;
     },
     getAccount() {
-      financeAccount().then(ret => {
-        if (!ret) {
+      userinfo().then(ret => {
+        this.$store.commit("member/setUserinfo", ret);
+        if (!ret.yuebao) {
           this.$router.replace("/page/finance/open_account");
         } else {
-          this.account = ret;
+          this.account = ret.yuebao;
         }
       });
     }

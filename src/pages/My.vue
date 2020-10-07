@@ -44,7 +44,7 @@
           </q-btn>
           <q-btn flat no-caps to="/page/finance/account">
             <span class="text-h6" style="line-height:1.2rem">
-              {{ userinfo.financial_money | symbol }}
+              {{ yuebao.balance | symbol }}
               <br />
               <span class="text-caption">{{ $t("kubera_finance") }}</span>
             </span>
@@ -168,6 +168,9 @@ export default {
   computed: {
     userinfo() {
       return this.$store.state.member.userinfo;
+    },
+    yuebao() {
+      return this.userinfo.yuebao || {};
     },
     headerBg() {
       return this.$store.state.common.headerBg;

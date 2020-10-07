@@ -39,13 +39,17 @@
           </q-item-section>
           <q-item-section>
             <q-item-label>{{ item.title }}</q-item-label>
-            <q-item-label caption lines="3">{{ item.desc }}</q-item-label>
+            <q-item-label caption>{{ item.explain }}</q-item-label>
           </q-item-section>
           <q-item-section side top>
             <q-item-label caption>
-              {{ item.type_text | periodUnit(item) }}
+              {{ item.profit_unit }} Yield ({{ item.interest_method }})
             </q-item-label>
-            <q-item-label>{{ item.rate | toFixed }} %</q-item-label>
+            <q-item-label>
+              {{ item.profit }}/<span class=" text-caption">{{
+                item.profit_unit
+              }}</span>
+            </q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
