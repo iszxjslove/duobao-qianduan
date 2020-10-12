@@ -89,6 +89,11 @@
           :placeholder="$t('recommendation_code')"
           :label="$t('referrer')"
           clearable
+          :rules="[
+            val =>
+              (val && val.length > 0) ||
+              $t('field_required', { field: 'referrer' })
+          ]"
         >
           <template v-slot:prepend>
             <q-icon name="o_admin_panel_settings" />

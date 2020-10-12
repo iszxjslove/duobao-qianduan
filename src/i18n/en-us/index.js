@@ -201,5 +201,6 @@ export default {
   payment_password: "Payment password",
   email: "Email",
   default: "Default",
-  "Set this card as default": "Set this card as default"
+  "Set this card as default": "Set this card as default",
+  field_required: "{field} required"
 };
