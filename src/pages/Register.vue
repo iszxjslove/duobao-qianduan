@@ -264,9 +264,12 @@ export default {
     let agree = await agreement("register");
     this.agreement = agree.content;
     this.subTitle = agree.subtitle;
-    this.form.referrer = this.$q.localStorage.getItem(
-      this.$config.key("referrer")
-    );
+    let referrerKey = this.$config.key("referrer");
+    if (this.$route.query.referrer) {
+      this.$q.sessionStorage.set(referrerKey, this.$route.query.referrer);
+    }
+    let referrer = this.$q.sessionStorage.getItem(referrerKey);
+    this.form.referrer = referrer;
   }
 };
 </script>
