@@ -66,8 +66,29 @@ const routes = [
       },
       {
         path: "promotion",
-        component: () => import("pages/Promotion.vue"),
-        meta: { title: "my_promotion" }
+        component: () => import("layouts/EmptyLayout.vue"),
+        children: [
+          {
+            path: "",
+            component: () => import("pages/Promotion.vue"),
+            meta: { title: "my_promotion" }
+          },
+          {
+            path: "bonus",
+            component: () => import("pages/BonusRecord.vue"),
+            meta: { title: "bonus_record" }
+          },
+          {
+            path: "apply",
+            component: () => import("pages/BonusApplyRecord.vue"),
+            meta: { title: "apply_record" }
+          },
+          {
+            path: "record",
+            component: () => import("pages/PromotionRecord.vue"),
+            meta: { title: "promotion_record" }
+          }
+        ]
       },
       {
         path: "share",

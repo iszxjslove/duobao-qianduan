@@ -193,3 +193,32 @@ export const withdrawAdd = params => {
     api: "withdrawAdd"
   });
 };
+export const promotionCount = params => {
+  return api("/promotion/count", params, {
+    api: "promotionCount"
+  });
+};
+export const bonusRecord = params => {
+  return api("/promotion/bonusRecord", params, {
+    api: "bonusRecord"
+  });
+};
+export const applyRecord = params => {
+  return api("/promotion/applyRecord", params, {
+    api: "applyRecord"
+  });
+};
+export const promotionRecord = params => {
+  return api("/promotion/promotionRecord", params, {
+    api: "promotionRecord"
+  });
+};
+export const applyToBalance = () => {
+  return api(
+    "/promotion/applyToBalance",
+    {},
+    {
+      api: "applyToBalance"
+    }
+  );
+};

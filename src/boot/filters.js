@@ -1,3 +1,4 @@
+import { date } from "quasar";
 export default async ({ Vue, store }) => {
   const filters = {
     symbol: (value, fixed = 2) => {
@@ -11,6 +12,16 @@ export default async ({ Vue, store }) => {
     },
     cdn: path => {
       return store.state.common.cdnurl + path;
+    },
+    dateFormat(time, format = "YYYY-MM-DD HH:mm:ss") {
+      // YYYY-MM-DDTHH:mm:ss.SSSZ
+      if (typeof time == "number") {
+        if (time.toString().length == 10) {
+          time += "000";
+        }
+        time = new Date().setTime(time);
+      }
+      return date.formatDate(time, format);
     },
     concat: (str1, str2, sep = "", pos) => {
       let bef = str1,

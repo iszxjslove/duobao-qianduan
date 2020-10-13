@@ -83,6 +83,7 @@ export default {
   apply_tobalance: "Apply ToBalance",
   bonus_record: "Bonus Record",
   apply_record: "Apply Record",
+  promotion_record: "Promotion Record",
   record: "Record",
   records: "Records",
   level: "Level",
