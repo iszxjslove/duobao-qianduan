@@ -1,5 +1,6 @@
 <template>
   <q-card flat @click="onClick">
+    <q-separator></q-separator>
     <q-img :src="data.picture | cdn" :ratio="1" class="bg-grey-1">
       <template v-slot:error>
         <div

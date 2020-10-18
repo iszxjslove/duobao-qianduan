@@ -78,7 +78,7 @@ export default {
       agreement("home_pop_up_notice").then(ret => {
         this.content = ret.content;
         this.title = ret.title;
-        this.dialog = true;
+        this.dialog = !!ret;
       });
     },
     closeNotice() {
